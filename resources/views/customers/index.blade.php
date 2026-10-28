@@ -3,7 +3,7 @@
 @section('content')
     <h1>Customer Accounts</h1>
 
-    <p>Below is the list of customer accounts from a static PHP array.</p>
+    <p>Below is the list of customer accounts retrieved with Eloquent.</p>
 
     <table>
         <thead>
@@ -18,10 +18,10 @@
         <tbody>
             @foreach ($customers as $customer)
                 <tr>
-                    <td>{{ $customer['id'] }}</td>
-                    <td>{{ $customer['name'] }}</td>
-                    <td>{{ $customer['email'] }}</td>
-                    <td>{{ $customer['phone'] }}</td>
+                    <td>{{ $customer->id }}</td>
+                    <td>{{ $customer->full_name }}</td>
+                    <td>{{ $customer->email }}</td>
+                    <td>{{ $customer->phone }}</td>
                 </tr>
             @endforeach
         </tbody>
