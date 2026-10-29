@@ -2,10 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\Customer;
+use App\Models\Task;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Carbon\Carbon;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,20 +14,84 @@ class DatabaseSeeder extends Seeder
 
     public function run(): void
     {
+        // Exactly one user record
         User::insert([
-            ['username' => 'admin', 'full_name' => 'Admin User', 'created_at' => now(), 'updated_at' => now()],
-            ['username' => 'cashier1', 'full_name' => 'Cashier One', 'created_at' => now(), 'updated_at' => now()],
-            ['username' => 'cashier2', 'full_name' => 'Cashier Two', 'created_at' => now(), 'updated_at' => now()],
-            ['username' => 'inventory', 'full_name' => 'Inventory Staff', 'created_at' => now(), 'updated_at' => now()],
-            ['username' => 'manager', 'full_name' => 'Manager User', 'created_at' => now(), 'updated_at' => now()],
+            'username' => 'valon',
+            'full_name' => 'Joseph Victor A. Valones',
+            'email' => 'valon@example.com',
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
 
-        Customer::insert([
-            ['full_name' => 'Juan Dela Cruz', 'email' => 'juan@example.com', 'phone' => '09171234567', 'created_at' => now(), 'updated_at' => now()],
-            ['full_name' => 'Maria Santos', 'email' => 'maria@example.com', 'phone' => '09181234567', 'created_at' => now(), 'updated_at' => now()],
-            ['full_name' => 'Carlo Reyes', 'email' => 'carlo@example.com', 'phone' => '09191234567', 'created_at' => now(), 'updated_at' => now()],
-            ['full_name' => 'Anne Cruz', 'email' => 'anne@example.com', 'phone' => '09201234567', 'created_at' => now(), 'updated_at' => now()],
-            ['full_name' => 'Mark Garcia', 'email' => 'mark@example.com', 'phone' => '09211234567', 'created_at' => now(), 'updated_at' => now()],
+        $today = Carbon::today();
+        $yesterday = Carbon::yesterday();
+        $lastWeek = Carbon::now()->subWeek();
+
+        // At least 8 tasks spanning at least 3 different dates, including today
+        Task::insert([
+            [
+                'title' => 'Complete TSA3 Laravel implementation',
+                'status' => 'pending',
+                'task_date' => $today,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'title' => 'Review TFA6 Eloquent code',
+                'status' => 'completed',
+                'task_date' => $today,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'title' => 'Deploy to Byet.host',
+                'status' => 'pending',
+                'task_date' => $today,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'title' => 'Push TFA6 to GitHub',
+                'status' => 'completed',
+                'task_date' => $yesterday,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'title' => 'Fix Laravel bootstrap on shared hosting',
+                'status' => 'pending',
+                'task_date' => $yesterday,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'title' => 'Create TSA3 migrations and models',
+                'status' => 'completed',
+                'task_date' => $yesterday,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'title' => 'Update documentation for TSA3',
+                'status' => 'pending',
+                'task_date' => $lastWeek,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'title' => 'Test Eloquent queries and date filtering',
+                'status' => 'completed',
+                'task_date' => $lastWeek,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'title' => 'Prepare submission links',
+                'status' => 'pending',
+                'task_date' => $lastWeek,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
         ]);
     }
 }

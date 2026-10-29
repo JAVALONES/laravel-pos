@@ -65,9 +65,9 @@
 
     <nav>
         <a href="{{ route('home') }}">Home</a>
+        <a href="{{ route('tasks.index') }}">Tasks</a>
+        <a href="{{ route('profile.show') }}">Profile</a>
         <a href="{{ route('about') }}">About</a>
-        <a href="{{ route('customers.index') }}">Customer Accounts</a>
-        <a href="{{ route('users.index') }}">User Accounts</a>
     </nav>
 
     <div class="container">
