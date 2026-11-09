@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Task;
 use App\Models\User;
+use App\Models\Customer;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Carbon\Carbon;
@@ -92,6 +93,26 @@ class DatabaseSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
+        ]);
+
+        // Seed customers for TFA7
+        Customer::insert([
+            'full_name' => 'John Doe',
+            'email' => 'john@example.com',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+        Customer::insert([
+            'full_name' => 'Jane Smith',
+            'email' => 'jane@example.com',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+        Customer::insert([
+            'full_name' => 'Bob Johnson',
+            'email' => 'bob@example.com',
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
     }
 }
