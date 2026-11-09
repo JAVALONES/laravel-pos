@@ -1,0 +1,40 @@
+@extends('layouts.app')
+
+@section('content')
+<div class="row">
+    <div class="col-md-6">
+        <h2>Create User</h2>
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+        <form action="{{ route('users.store') }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" name="username" id="username" class="form-control" value="{{ old('username') }}" required>
+            </div>
+            <div class="form-group">
+                <label for="full_name">Full Name</label>
+                <input type="text" name="full_name" id="full_name" class="form-control" value="{{ old('full_name') }}" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" class="form-control" value="{{ old('email') }}" required>
+            </div>
+            <div class="form-group">
+                <label for="avatar">Profile Picture (max 2MB, image only)</label>
+                <input type="file" name="avatar" id="avatar" class="form-control-file" accept="image/*">
+                <small class="form-text text-muted">Optional.</small>
+            </div>
+            <button type="submit" class="btn btn-primary">Create User</button>
+            <a href="{{ route('users.index') }}" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+</div>
+@endsection
